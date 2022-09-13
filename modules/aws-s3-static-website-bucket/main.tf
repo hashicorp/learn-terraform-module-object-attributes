@@ -45,10 +45,6 @@ resource "aws_s3_bucket_policy" "s3_bucket" {
   })
 }
 
-locals {
-  www_path = var.www_path != null ? var.www_path : "${path.module}/www"
-}
-
 module "template_files" {
   source  = "hashicorp/dir/template"
   version = "1.0.2"
