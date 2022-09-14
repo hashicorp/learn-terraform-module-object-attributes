@@ -19,6 +19,5 @@ module "website_s3_bucket" {
     terraform     = "true"
     environment   = "dev"
     public-bucket = true
-
   }
 }

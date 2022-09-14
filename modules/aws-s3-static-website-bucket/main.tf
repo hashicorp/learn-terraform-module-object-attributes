@@ -11,11 +11,11 @@ resource "aws_s3_bucket_website_configuration" "s3_bucket" {
   bucket = aws_s3_bucket.s3_bucket.id
 
   index_document {
-    suffix = "index.html"
+    suffix = var.index_document_suffix
   }
 
   error_document {
-    key = "error.html"
+    key = var.error_document_key
   }
 }
 
@@ -53,7 +53,7 @@ module "template_files" {
 }
 
 resource "aws_s3_object" "object" {
-  for_each = module.template_files.files
+  for_each = var.terraform_managed_files ? module.template_files.files : {}
 
   bucket = aws_s3_bucket.s3_bucket.id
 
