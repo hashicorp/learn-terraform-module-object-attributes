@@ -48,19 +48,19 @@ variable "terraform_managed_files" {
 #     terraform_managed     = bool
 #     error_document_key    = optional(string, "error.html")
 #     index_document_suffix = optional(string, "index.html")
-#     www_path              = optional(string, null)
+#     www_path              = optional(string)
 #   })
 # }
 
 # variable "cors_rules" {
 #   description = "List of CORS rules."
 #   type = list(object({
-#     allowed_headers = optional(set(string), null),
+#     allowed_headers = optional(set(string)),
 #     allowed_methods = set(string),
 #     allowed_origins = set(string),
-#     expose_headers  = optional(set(string), null),
-#     id              = optional(string, null),
-#     max_age_seconds = optional(number, null)
+#     expose_headers  = optional(set(string)),
+#     id              = optional(string),
+#     max_age_seconds = optional(number)
 #   }))
 #   default = []
 # }

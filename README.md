@@ -27,7 +27,7 @@ variable "files" {
     terraform_managed     = bool
     error_document_key    = optional(string, "error.html")
     index_document_suffix = optional(string, "index.html")
-    www_path              = optional(string, null)
+    www_path              = optional(string)
   })
 }
 ```
@@ -68,8 +68,9 @@ Now when you use the module, you can:
 1. Use the `files` attribute with `terraform_managed` set to `false` to manage files outside of Terraform.
 1. Set `terraform_managed` to `true`, and either use the default files (in `modules/aws-s3-static-website/www`) or specify your own path.
 1. Either way, optionally configure `index_document_suffix` and/or `error_document_key`.
+1. Since the `files` attribute doesn't have a default value, it is required.
 
-Update `main.tf` (in the root) to use this object:
+Update `main.tf` (in the root) to use this attribute:
 
 ```hcl
 module "website_s3_bucket" {
@@ -93,11 +94,11 @@ Add to `modules/aws-s3-static-website/variables.tf`:
 variable "cors_rules" {
   description = "List of CORS rules."
   type = list(object({
-    allowed_headers = optional(set(string), null),
+    allowed_headers = optional(set(string)),
     allowed_methods = set(string),
     allowed_origins = set(string),
-    expose_headers  = optional(set(string), null),
-    max_age_seconds = optional(number, null)
+    expose_headers  = optional(set(string)),
+    max_age_seconds = optional(number)
   }))
   default = []
 }
