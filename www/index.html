@@ -2,9 +2,23 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Static Website</title>
+    <title>Terranimo</title>
+    <link rel="stylesheet" href="/styles/terramino.css" />
   </head>
   <body>
-    <p>Hello, world!</p>
+    <div id="score"></div>
+    <div class="container">
+      <div class="content">
+        <h1>Terramino</h1>
+        <p>Move: ← →  Rotate: ↑  Drop: ↓</p>
+      </div>
+      <div class="content">
+        <canvas width="320" height="640" id="game">
+
+        </canvas>
+      </div>
+    </div>
+    <script src="/scripts/terramino.js"></script>
+    <script>start();</script>
   </body>
 </html>
